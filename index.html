@@ -1,51 +1,84 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ريلاكس</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Cairo:wght@700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: black;
-      color: white;
-      overflow: hidden;
-      font-family: 'Orbitron', 'Cairo', sans-serif;
-    }
-    canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+  <title>My Info - Cristiano Style</title>
 
-    .center {
+  <!-- خط قريب من 𝑎𝑠𝑑 -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Great Vibes', cursive;
+      color: white;
+      position: relative;
+    }
+
+    body {
+      background: url('https://wallpapercg.com/media/ts_orig/19665.webp') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* طبقة تعتيم لتوضيح النص */
+    body::before {
+      content: "";
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background-color: rgba(0,0,0,0.55);
+      z-index: 0;
+    }
+
+    .container {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      max-width: 90%;
+      padding: 25px 40px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 15px;
+      z-index: 1;
     }
 
-    #typed-text {
+    .container h1 {
+      font-size: 3.2em;
+      text-shadow: 0 0 15px #00ffff;
+      margin-bottom: 12px;
+    }
+
+    .container p {
       font-size: 1.5em;
-      white-space: pre-line;
-      margin-bottom: 30px;
-      line-height: 2;
+      line-height: 1.4;
+      text-shadow: 0 0 8px black;
+      margin-bottom: 10px;
     }
 
-    #channel-btn, #second-channel-btn {
-      display: none;
-      padding: 10px 20px;
-      background: #0ff;
+    .btn {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 11px 25px;
+      font-size: 1.3em;
+      font-weight: bold;
       color: black;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+      background: #0ff;
+      border-radius: 12px;
+      text-decoration: none;
       transition: 0.3s;
-      margin-top: 10px;
     }
-
-    #channel-btn:hover { background: white; color: black; }
-    #second-channel-btn:hover { background: #ff0; color: black; }
+    .btn:hover {
+      background: white;
+    }
 
     .social-icons {
       position: fixed;
@@ -53,110 +86,38 @@
       bottom: 20px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 14px;
+      z-index: 2;
     }
     .social-icons img {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
+      width:45px;
+      height:45px;
+      cursor:pointer;
       transition: transform 0.3s;
     }
-    .social-icons img:hover { transform: scale(1.2); }
+    .social-icons img:hover { transform: scale(1.3); }
+
   </style>
 </head>
 <body>
-  <canvas id="bg"></canvas>
 
-  <div class="center">
-    <div id="typed-text"></div>
-    <button id="channel-btn" onclick="window.open('https://t.me/YXY_15')">قناتي | My Channel</button>
-    <button id="second-channel-btn" onclick="window.open('https://t.me/YXY_12')">حسابي الثاني | Second Telegram</button>
+  <div class="container">
+    <h1>Welcome to My Page</h1>
+    <p>Name: Aqool</p>
+    <p>Age: 15</p>
+    <p>Country: Iraq 🇮🇶</p>
+    <p>Interests: Python & CyberSecurity</p>
+
+    <a class="btn" href="https://t.me/YXY_15" target="_blank">My Channel</a>
+    <a class="btn" href="https://t.me/YXY_12" target="_blank">Second Telegram</a>
   </div>
 
   <div class="social-icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" onclick="window.open('https://t.me/YXY_15')">
-    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" onclick="window.open('https://www.tiktok.com/@u.sij?_r=1&_t=ZS-943O9Cn0X7F', '_blank')">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" onclick="window.open('https://www.instagram.com/__2z_p?igsh=c2p1aGJ2cjViOWx2', '_blank')">
-    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Discord" onclick="window.open('حط رابطك', '_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" onclick="window.open('https://t.me/YXY_15')" alt="Telegram">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" onclick="window.open('https://www.tiktok.com/@u.sij?_r=1&_t=ZS-943O9Cn0X7F')" alt="TikTok">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" onclick="window.open('https://www.instagram.com/__2z_p?igsh=c2p1aGJ2cjViOWx2')" alt="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" onclick="window.open('#')" alt="Discord">
   </div>
 
-  <script>
-    // Canvas background
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let stars = [];
-    for (let i = 0; i < 100; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5,
-        dx: (Math.random() - 0.5) * 0.5,
-        dy: (Math.random() - 0.5) * 0.5
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "white";
-      stars.forEach(star => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fill();
-      });
-    }
-
-    function update() {
-      stars.forEach(star => {
-        star.x += star.dx;
-        star.y += star.dy;
-        if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
-        if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
-      });
-    }
-
-    function animate() { draw(); update(); requestAnimationFrame(animate); }
-    animate();
-    window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
-
-    // Typing Effect with highlighted ""
-    const text = `هلا بيك/ج | Welcome
-معلوماتي | My Info
-
-اسمي عقيل | Name: 𝑨𝒒𝒐𝒐𝒍𝒆
-عمري 15 | Age: 15
-عراق | IRAQ
-لغات البرمجه:بايثون 
- | Programming Languages: python
- 𝑨𝒏𝒅 𝑪𝒚𝒃𝒆𝒓𝒔𝒆𝒄𝒖𝒓𝒊𝒕𝒚 𝒔𝒕𝒖𝒅𝒆𝒏𝒕`;
-
-    let i = 0;
-    const speed = 70;
-    const typedTextElement = document.getElementById("typed-text");
-
-    function typeWriter() {
-      if (i < text.length) {
-        let char = text.charAt(i);
-
-        // إبراز كلمة "أحبك"
-        if (text.substring(i, i+5) === "") {
-          typedTextElement.innerHTML += `<span style="color:red;font-weight:bold;"></span>`;
-          i += 4; // تخطي الحروف لأننا ضفنا span
-        } else {
-          typedTextElement.innerHTML += char;
-        }
-
-        i++;
-        setTimeout(typeWriter, speed);
-      } else {
-        document.getElementById("channel-btn").style.display = "inline-block";
-        document.getElementById("second-channel-btn").style.display = "inline-block";
-      }
-    }
-
-    window.onload = typeWriter;
-  </script>
 </body>
 </html>
