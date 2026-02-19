@@ -6,25 +6,14 @@
   <title>ريلاكس</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Cairo:wght@700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: black;
       color: white;
       overflow: hidden;
       font-family: 'Orbitron', 'Cairo', sans-serif;
     }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
+    canvas { position: fixed; top: 0; left: 0; z-index: -1; }
 
     .center {
       position: absolute;
@@ -42,7 +31,7 @@
       line-height: 2;
     }
 
-    #channel-btn {
+    #channel-btn, #second-channel-btn {
       display: none;
       padding: 10px 20px;
       background: #0ff;
@@ -52,12 +41,11 @@
       border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
+      margin-top: 10px;
     }
 
-    #channel-btn:hover {
-      background: white;
-      color: black;
-    }
+    #channel-btn:hover { background: white; color: black; }
+    #second-channel-btn:hover { background: #ff0; color: black; }
 
     .social-icons {
       position: fixed;
@@ -67,17 +55,13 @@
       flex-direction: column;
       gap: 15px;
     }
-
     .social-icons img {
       width: 40px;
       height: 40px;
       cursor: pointer;
       transition: transform 0.3s;
     }
-
-    .social-icons img:hover {
-      transform: scale(1.2);
-    }
+    .social-icons img:hover { transform: scale(1.2); }
   </style>
 </head>
 <body>
@@ -86,6 +70,7 @@
   <div class="center">
     <div id="typed-text"></div>
     <button id="channel-btn" onclick="window.open('https://t.me/YXY_15')">قناتي | My Channel</button>
+    <button id="second-channel-btn" onclick="window.open('https://t.me/YXY_12')">حسابي الثاني | Second Telegram</button>
   </div>
 
   <div class="social-icons">
@@ -116,7 +101,7 @@
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "white";
-      stars.forEach((star) => {
+      stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -124,7 +109,7 @@
     }
 
     function update() {
-      stars.forEach((star) => {
+      stars.forEach(star => {
         star.x += star.dx;
         star.y += star.dy;
         if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
@@ -132,39 +117,42 @@
       });
     }
 
-    function animate() {
-      draw();
-      update();
-      requestAnimationFrame(animate);
-    }
-
+    function animate() { draw(); update(); requestAnimationFrame(animate); }
     animate();
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+    window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-    // Typing Effect
-    const text = `هلا بيك | Welcome
+    // Typing Effect with highlighted ""
+    const text = `هلا بيك/ج | Welcome
 معلوماتي | My Info
+
 اسمي عقيل | Name: 𝑨𝒒𝒐𝒐𝒍𝒆
 عمري 15 | Age: 15
 عراق | IRAQ
-؟؟ | ؟؟ 
 لغات البرمجه:بايثون 
  | Programming Languages: python
  𝑨𝒏𝒅 𝑪𝒚𝒃𝒆𝒓𝒔𝒆𝒄𝒖𝒓𝒊𝒕𝒚 𝒔𝒕𝒖𝒅𝒆𝒏𝒕`;
+
     let i = 0;
     const speed = 70;
     const typedTextElement = document.getElementById("typed-text");
 
     function typeWriter() {
       if (i < text.length) {
-        typedTextElement.innerHTML += text.charAt(i);
+        let char = text.charAt(i);
+
+        // إبراز كلمة "أحبك"
+        if (text.substring(i, i+5) === "") {
+          typedTextElement.innerHTML += `<span style="color:red;font-weight:bold;"></span>`;
+          i += 4; // تخطي الحروف لأننا ضفنا span
+        } else {
+          typedTextElement.innerHTML += char;
+        }
+
         i++;
         setTimeout(typeWriter, speed);
       } else {
         document.getElementById("channel-btn").style.display = "inline-block";
+        document.getElementById("second-channel-btn").style.display = "inline-block";
       }
     }
 
